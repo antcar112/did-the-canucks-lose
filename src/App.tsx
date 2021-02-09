@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useLoss } from './useLoss'
+import './App.css'
 
-function App() {
+const App = () => {
+  const { won, loading } = useLoss()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+      {!loading && (
+        <>
+          <h2 className='text text-md'>Did the Canucks lose?</h2>
+          <h1 className='text text-lg'>{won ? 'No' : 'Yes'}</h1>
+        </>
+      )}
+    </main>
+  )
 }
 
-export default App;
+export default App
